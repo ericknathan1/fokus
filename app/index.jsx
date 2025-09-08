@@ -1,10 +1,37 @@
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
+const pomodoro = [
+  {
+    id:"focus",
+    initialValue:25,
+    image:require('./foco.png'),
+    display: "Foco",
+
+  },
+  {
+    id:"short",
+    initialValue:5,
+    image:require('./descanso_curto.png'),
+    display: "Pausa curta",
+  
+  },
+  {
+    id:"long",
+    initialValue:15,
+    image:require('./descanso_longo.png'),
+    display: "Pausa longa,"
+  
+  },
+]
+
 export default function Index() {
+  const [] = useState;
+
   const [loaded, error] = useFonts({
     'Unbounded': require('../assets/fonts/Unbounded.ttf'),
     'montserrat': require('../assets/fonts/montserrat.ttf')
