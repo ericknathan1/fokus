@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { ActionButton } from "../components/ActionButton";
+import { FokusButton } from "../components/FokusButton";
 
 const pomodoro = [
   {
@@ -32,13 +34,20 @@ export default function Index() {
       <View style={styles.actions}>
         <View style={styles.context}>
           {pomodoro.map(p =>
-          <Pressable 
-            key={p.id} 
-            style={ timerType.id === p.id ? styles.contextButtonActive : null}
-            onPress={() => setTimerType(p)}
-            >
-            <Text style={styles.contextButtonText}>{p.display}</Text>
-          </Pressable>
+            <ActionButton 
+              key={p.id}
+              active={timerType.id === p.id}
+              onPress={() => setTimerType(p)}
+              display={p.display}
+            
+            />
+          // <Pressable 
+          //   key={p.id} 
+          //   style={ timerType.id === p.id ? styles.contextButtonActive : null}
+          //   onPress={() => setTimerType(p)}
+          //   >
+          //   <Text style={styles.contextButtonText}>{p.display}</Text>
+          // </Pressable>
           )}
 
         </View>
@@ -48,9 +57,7 @@ export default function Index() {
 
           })}
           </Text>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>Começar</Text>
-        </Pressable>
+        <FokusButton />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>
@@ -100,16 +107,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: "bold",
     textAlign: "center",
-  },
-  button: {
-    backgroundColor: '#B872FF',
-    borderRadius: 32,
-    padding: 8,
-  },
-  buttonText: {
-    textAlign: "center",
-    color: '#021123',
-    fontSize: 18,
   },
   footer: {
     width: '80%',
